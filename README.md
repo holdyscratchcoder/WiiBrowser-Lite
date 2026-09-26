@@ -54,3 +54,4 @@ See also: [MIGRATION.md](MIGRATION.md) (from `source/`), [CHANGELOG.md](CHANGELO
 - GBATemp thread: https://gbatemp.net/threads/wii-browser.342634/
 - Original webpage (archived): https://web.archive.org/web/20131002190414/http://wiibrowser.altervista.org/mainsite/index.html
 - Original source code (archived): https://code.google.com/archive/p/wiibrowser/
+- a
