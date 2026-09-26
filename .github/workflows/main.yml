@@ -14,15 +14,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Update package databases
-        run: |
-          dkp-pacman -Sy --noconfirm
-
       - name: Install compiled dependencies
         run: |
-          dkp-pacman -S --noconfirm devkitPPC libogc ppc-zlib ppc-libpng ppc-freetype ppc-libjpeg-turbo ppc-mxml wii-dev
+          pacman -S --noconfirm devkitPPC libogc ppc-zlib ppc-libpng ppc-freetype ppc-libjpeg-turbo ppc-mxml wii-dev
 
       - name: Compile source code
         run: |
           make
+
 
