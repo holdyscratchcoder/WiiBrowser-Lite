@@ -24,8 +24,11 @@ jobs:
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Install extra portlibs
         run: |
+            - name: Install dependencies
+        run: |
           dkp-pacman -Syu --noconfirm
-          dkp-pacman -S --noconfirm \
+          dkp-pacman -S --noconfirm devkitPPC libogc ppc-zlib ppc-libpng ppc-freetype ppc-libjpeg-turbo ppc-mxml wii-dev
+
             devkitPPC \
             libogc \
             ppc-zlib \
