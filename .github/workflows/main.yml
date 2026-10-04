@@ -10,19 +10,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: devkitpro/devpi:latest
+      # Switch to the dedicated PPC container
+      image: devkitpro/devkitppc:latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Wii libraries
-        run: |
-          dkp-pacman -Syu --noconfirm wii-dev
+      # Pacman update step is removed because wii-dev tools are already baked into this image
 
+      # devkitppc container sets up the variables automatically, so you just call make
       - name: Build project
         run: |
-          . /opt/devkitpro/devkitenv.sh
           make
 
       - name: Upload artifact
@@ -33,10 +32,4 @@ jobs:
             *.dol
             *.elf
             apps/
-```
-
-### 2. How the Build Process Works
-* **Container Image:** Uses the official `devkitpro/devpi` Docker container which already has the base `devkitPro` environment configured.
-* **DKP-Pacman:** Installs `wii-dev`, which includes `libogc` and the required toolchains for compiling applications targeting the Nintendo Wii.
-* **Make:** Sources the environment variables (`devkitenv.sh`) and runs your repository's native `Makefile` to output your `.dol` or `.elf` files.
-* **Artifact Upload:** Saves the compiled binaries so you can download them directly from the GitHub Actions summary page after the workflow finishes.
+            
